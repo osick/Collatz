@@ -17,7 +17,7 @@ Table of Contents
       * [length()](#length)
       * [stoppingTime()](#stoppingTime)
       * [sequence()](#sequence)
-      * [lengts(m,s)](#lengthsms)
+      * [lengths(m,s)](#lengthsms)
       * [stoppingTimes(m,s)](#stoppingTimesms)
   * [Dependencies](#Dependencies)
   * [License](#license)
