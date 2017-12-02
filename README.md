@@ -1,121 +1,108 @@
 # Collatz
 
+This small library helps to calculate Collatz sequences with nodejs. 
+Using the big-integer nodejs library this computations can be donde for arbitrary large numbers (examples see below)
 
 ## Mathematical Definition
 
-Collatz sequences n_k are defined for k>=0 as following:
+Collatz sequences n<sub>k</sub> are defined for k>=0 as follows:
 
-1. k=0: Choose an initial number n_0
-2. k>=0: If n_k is even then n_{k+1}=n_k/2 else we set n_{k+1}=3*n_{k}+1
+1. Choose an initial number n<sub>0</sub>&gt;1
+2. For k>=0 
+  * if n<sub>k</sub> is even then n<sub>k+1</sub>=n<sub>k</sub>/2 
+  * else n<sub>k+1</sub>=3*n<sub>k</sub>+1
 
 For example choose 
-n_0 = 7 
-n_1  = 22
-n_2  = 11
-n_3  = 34
-n_4  = 17
-n_5  = 52
-n_6  = 26
-n_7  = 13
-n_8  = 40
-n_10 = 20
-n_11 = 10
-n_12 =  5
-n_13 = 16
-n_14 =  8
-n_15 =  4
-n_16 =  2
-n_17 =  1
-n_18 =  4
-n_19 =  2
-n_20 =  1
+n<sub>0</sub> = 7 then  
+n<sub>1</sub>  = 22  
+n<sub>2</sub>  = 11  
+n<sub>3</sub>  = 34  
+n<sub>4</sub>  = 17  
+...  
+n<sub>14</sub> =  8  
+n<sub>15</sub> =  4  
+n<sub>16</sub> =  2  
+n<sub>17</sub> =  1  
+n<sub>18</sub> =  4    
+and so on  
 
-and so on
-
-The Collatz Conjecture now is that for any initial number n_0 there is a k>0 s.t. n_k = 1.
-This conjecture is unproven for more than 60 years. For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)
-
+The Collatz Conjecture now is that for any initial number n<sub>0</sub> there is a k>0 s.t. n<sub>k</sub> = 1.
+This conjecture is still open for more than 60 years.  
+For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
 
 ##Basis syntax
 
+####Init
+
 ```javascript
-var bigInt = require("big-integer");
+	var Collatz = require('./collatz/collatz.js').Collatz;  
+    collatz.number("17"); 
+	//also collatz.number(17) is possible
+    collatz.init();
+```
 
-var Collatz = require('./collatz/collatz.js').Collatz;
+also big-integer are supported 
 
-var collatz = new Collatz(bigInt(10).pow(100).add(1));
+```javascript	
+	//1000 digit number
+    var Collatz = require('./collatz/collatz.js').Collatz;  
+	var bigInt = require("big-integer");
+    collatz.number(bigInt(10).pow(1000).add(5));
+    collatz.init();
+```
 
-var bigInt = require("big-integer");
+####Get number: 
 
-var Collatz = function(n){
-  this._number
-  this._stoppingTime 
-  this._length 
-  this.number(n);
-}
-
-
-/* Collatz.prototype.lengths */ 
-Collatz.prototype.lengths  = function(m,s) 
-//returns the lengths of the 
-  if (typeof m === "undefined") { throw new Error("offset is needed")}
-  if (!/^\+?(0|[1-9]\d*)$/.test(m)) { throw new Error(m+"as offset is not a positive number")}
-  var offset = bigInt(m);
-  var lengths=[];
-  var orig_number=this._number.toString();
-  var max_number=this._number.add(offset);
-  var iter = bigInt(this._number);
-  while (iter.lt(max_number)){
-    iter=iter.add(s);
-    this.number(iter);
-    lengths.push(this.length());
-  } 
-  this.number(orig_number);
-  return lengths;
-}
-
-/* Collatz.prototype.stoppingTimes */ 
-Collatz.prototype.stoppingTimes  = function(m,s){
-  if (typeof m === "undefined") { 
-	throw new Error("offset is needed")
-  }
-  if (!/^\+?(0|[1-9]\d*)$/.test(m)) { 
-	throw new Error(m+"as offset is not a positive number")
-  }
-  var offset = bigInt(m);
-  var times=[];
-  var orig_number=this._number.toString();
-  var max_number=this._number.add(offset);
-  var iter = bigInt(this._number);
-  while (iter.lt(max_number)){
-    iter=iter.add(s);
-    this.number(iter);
-    times.push(this.stoppingTime());
-  } 
-  this.number(orig_number);
-  return times;
-}
+```javascript
     
-/* Collatz.prototype.iterNumber */ 
-Collatz.prototype.iterNumber = function(){this.number(getNextCollatz(this._number)); return this.number();}
-  
+	collatz.toString() 
+    // Output string "17"
+```
 
-  
-/* Collatz.prototype.stoppingTime */ 
-Collatz.prototype.stoppingTime = function(m){if (this._stoppingTime==-1) this.sequence(); return this._stoppingTime;}
-  
-/* Collatz.prototype.length */ 
-Collatz.prototype.length = function(m){if (this._length==-1) this.sequence(); return this._length;}
-  
-/* Collatz.prototype.sequence */ 
-Collatz.prototype.sequence = function(){
-  var sequence =[];  
-  var i=bigInt(this._number);
-  while(!i.equals(1)){
-    i=getNextCollatz(i);
-    sequence.push(i.toString());  
-    if (i<this._number && this._stoppingTime==-1) this._stoppingTime=sequence.length;
-  }
-  this._length=sequence.length;
-  return sequence;
-}
+####Get length: 
+
+```javascript
+	
+	collatz.number("17");
+	collatz.length() 
+	//Output 12
+```
+
+####Get stopping time:
+
+```javascript
+    
+	collatz.number("17");
+    collatz.stoppingTime() 
+    //Output 3
+```
+
+####Get sequence:
+```javascript
+    
+	collatz.number("17");
+    collatz.sequence()
+	//computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
+```
+
+####Get array of lengths (20 steps, width 1):
+```javascript
+    
+	collatz.number("17")
+    collatz.lengths(20,1).toString() 
+	//Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
+```
+
+####Get array of stopping Times (30 step, width 2):
+```javascript
+collatz.number("17");
+collatz.stoppingTimes(30,2).toString() 
+//Output string "6,3,8,3,96,3,91,3,6,3,13,3,8,3,88"
+```
+
+
+## Dependencies
+- [big-integer](https://www.npmjs.com/package/big-integer)  NodeJS module
+
+## License
+- [MIT](https://github.com/electron/electron/blob/master/LICENSE)
