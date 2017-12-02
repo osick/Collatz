@@ -1,0 +1,19 @@
+{
+  "name": "Collatz",
+  "version": "0.1.0",
+  "description": "Library for Computations related to the Collatz Conjecture",
+  "main": "collatz.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mathematics",
+    "Collatz",
+    "algorithms"
+  ],
+  "author": "Oliver Sick",
+  "license": "ISC",
+  "dependencies": {
+    "big-integer": "^1.6.25"
+  }
+}
