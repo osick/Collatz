@@ -4,6 +4,24 @@ This small library helps to calculate Collatz sequences with nodejs. Using the b
 
 ---
 
+Table of Contents
+=================
+
+  * [Quickstart](#Quick-start)
+  * [Mathematical Background](#Mathematical-Background)
+  * [Usage](#Usage)
+        * [init](#init)
+        * [numbern](#numbern)
+        * [toString](#toString)
+        * [length](#length)
+        * [stoppingTime](#stoppingTime)
+        * [sequence](#sequence)
+        * [lengts](#lengthsms)
+        * [stoppingTimes](#stoppingTimesms)
+  * [Dependencies](#Dependencies)
+  * [License](#license)
+  
+
 ## Quick start
 ### Installation
 
@@ -32,8 +50,8 @@ Collatz sequences n<sub>k</sub> are defined for k>=0 as follows:
   * if n<sub>k</sub> is even then n<sub>k+1</sub>=n<sub>k</sub>/2 
   * else n<sub>k+1</sub>=3*n<sub>k</sub>+1
 
-For example choose 
-n<sub>0</sub> = 7  
+For example choose n<sub>0</sub> = 7 then
+
 n<sub>1</sub>  = 22  
 n<sub>2</sub>  = 11  
 ...  
@@ -42,10 +60,11 @@ n<sub>15</sub> =  4
 n<sub>16</sub> =  2  
 n<sub>17</sub> =  1  
 n<sub>18</sub> =  4    
-and so on  
+n<sub>19</sub> =  2  
+n<sub>20</sub> =  1  
+n<sub>12</sub> =  4  ...
 
-The Collatz Conjecture now is that for any initial number n<sub>0</sub> there is a k>0 s.t. n<sub>k</sub> = 1.
-This conjecture is still open for more than 60 years. For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
+The Collatz Conjecture now is that for any initial number n<sub>0</sub> there is a k>0 s.t. n<sub>k</sub> = 1. This conjecture is still open for more than 60 years. For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
 
 ---
 
@@ -111,7 +130,7 @@ console.log(seq.toString());
 //returns [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
-#### Method `lengths(m,s)`
+#### `lengths(m,s)`
 Return an array of lengths m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
@@ -119,7 +138,7 @@ console.log(collatz.lengths(20,1).toString());
 //Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
 ```
 
-#### Method `stoppingTimes(m,s)`
+#### `stoppingTimes(m,s)`
 Return an array of stopping times m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
