@@ -67,56 +67,49 @@ collatz_3.init();
 ```
 
 
-#### `number()`
-Set the initial number
+#### `number()` : Set the initial number
 ```javascript
 var collatz = new Collatz("17");
 collatz.number("12");
 // Now 12 is the initial number "17"
 ```
 
-#### `toString()`
-Returns the initial number
+#### `toString()` : Returns the initial number
 ```javascript
 var collatz = new Collatz("17");
 collatz.toString();
 // Output string "17"
 ```
 
-####  `length()`
-Returns the length of the Collatz sequence until reaching 1
+####  `length()` : Return the length of the Collatz sequence until reaching 1
 ```javascript
 collatz.number("17");
 collatz.length();
 //Output 12
 ```
 
-####  `stoppingTime()`
-Returns the stopping Time
+####  `stoppingTime()` : Return the stopping time
 ```javascript
 collatz.number("17");
 collatz.stoppingTime(); 
 //Output 3
 ```
 
-####  `sequence()`
-Return the Collatz sequence starting from the initial value
+####  `sequence()` : Return the Collatz sequence starting from the initial value
 ```javascript
 collatz.number("17");
 collatz.sequence();
 //computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
-#### Method `lengths(m,s)`
-Returns an array of lengths m starting from the initial and with stepsize s
+#### Method `lengths(m,s)` : Return an array of lengths m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
 collatz.lengths(20,1).toString();
 //Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
 ```
 
-#### Method `stoppingTimes (m,s)`
-Returns an array of stopping times m starting from the initial and with stepsize s
+#### Method `stoppingTimes(m,s)` : Return an array of stopping times m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
 collatz.stoppingTimes(30,2).toString(); 
