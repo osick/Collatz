@@ -10,17 +10,20 @@ Table of Contents
   * [Quickstart](#Quick-start)
   * [Mathematical Background](#Mathematical-Background)
   * [Usage](#Usage)
-      * [init](#init)
-      * [numbern](#numbern)
-      * [toString](#toString)
-      * [length](#length)
-      * [stoppingTime](#stoppingTime)
-      * [sequence](#sequence)
-      * [lengts](#lengthsms)
-      * [stoppingTimes](#stoppingTimesms)
+      * [init()](#init)
+      * [number(n)](#numbern)
+      * [number()](#numbern)
+      * [toString()](#toString)
+      * [length()](#length)
+      * [stoppingTime()](#stoppingTime)
+      * [sequence()](#sequence)
+      * [lengts(m,s)](#lengthsms)
+      * [stoppingTimes(m,s)](#stoppingTimesms)
   * [Dependencies](#Dependencies)
   * [License](#license)
   
+---
+
 ## Quick start
 ### Installation
 
@@ -31,7 +34,7 @@ cd Collatz
 npm install
 ```
 
-### First running example
+### Run the sample script
 
 ```sh
 cd examples
@@ -93,11 +96,20 @@ Set the initial number
 ```javascript
 var collatz = new Collatz("17");
 collatz.number("12");
-// Now 12 is the initial number "17"
+// 12 is the initial number
+```
+
+#### `number()`
+Returns the initial number
+```javascript
+var collatz = new Collatz("17");
+collatz.number("12");
+console.log(collatz.number());
+// Output "12"
 ```
 
 #### `toString()`
-Returns the initial number
+Returns the initial number, synonymous to number()
 ```javascript
 var collatz = new Collatz("17");
 console.log(collatz.toString());

@@ -13,13 +13,7 @@ var Collatz = function(n){
     this._stoppingTime=-1;
     this._length=-1;
 	this._sequence=[];
-  }  
-  this.number = function(m){
-	if (typeof m === "undefined") return this._number.toString();
-	if (!/^\+?(0|[1-9]\d*)$/.test(m)) { throw new Error(m+" is not a positive number"); }
-	this._number=bigInt(m);
-	this._initObj(); 
-  }
+  } 
   this.number(n);
 }
 
@@ -33,6 +27,14 @@ Collatz.prototype.init = function(){
 		this._stoppingTime=this._sequence.length;	
 	}
   }
+}
+
+/* Collatz.prototype.number */ 
+Collatz.prototype.number = function(m){
+	if (typeof m === "undefined") return this._number.toString();
+	if (!/^\+?(0|[1-9]\d*)$/.test(m)) { throw new Error(m+" is not a positive number"); }
+	this._number=bigInt(m);
+	this._initObj();
 }
 
 /* Collatz.prototype.stoppingTime */ 
