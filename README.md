@@ -143,11 +143,11 @@ console.log(seq.toString());
 //returns [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
-####  `iterNumber()`
+####  `iterate()`
 Iterator to set the class to the next Collatz number in the sequence
 ```javascript
 collatz.number("17");
-console.log(collatz.iterNumber().toString());
+console.log(collatz.iterate().toString());
 //prints "52"
 ```
 
@@ -156,7 +156,7 @@ Checks if the current value is "1"
 ```javascript
 collatz.number("17");
 while(!collatz.isOne()){
-	console.log(collatz.iterNumber().toString()+", ");
+	console.log(collatz.iterate().toString()+", ");
 } 
 //prints out "52, 26, 13, ...., 1"
 ```

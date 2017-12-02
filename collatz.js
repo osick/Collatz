@@ -52,8 +52,8 @@ Collatz.prototype.toString = function(){return this._number.toString()};
 /*******************************************************************************************************/
 /* ITERATOR METHODS */
 /*******************************************************************************************************/
-/* Collatz.prototype.iterNumber */ 
-Collatz.prototype.iterNumber = function(){this.number(getNextCollatz(this._number)); return this.number();}
+/* Collatz.prototype.iterate */ 
+Collatz.prototype.iterate = function(){this.number(getNextCollatz(this._number)); return this.number();}
 
 /* Collatz.prototype.isOne */ 
 Collatz.prototype.isOne = function(){ return this._number.equals(bigInt.one);}
@@ -66,42 +66,37 @@ Collatz.prototype.isOne = function(){ return this._number.equals(bigInt.one);}
 /* Collatz.prototype.lengths */ 
 /*for an array starting from this._number to this._number */
 Collatz.prototype.lengths  = function(m,s){
-  if (typeof m === "undefined") { throw new Error("offset is needed")}
-  if (!/^\+?(0|[1-9]\d*)$/.test(m)) { throw new Error(m+"as offset is not a positive number")}
-  var offset = bigInt(m);
-  var lengths=[];
-  var orig_number=this._number.toString();
-  var max_number=this._number.add(offset);
-  var iter = bigInt(this._number);
-  while (iter.lt(max_number)){
-    iter=iter.add(s);
-    this.number(iter);
-    lengths.push(this.length());
-  } 
-  this.number(orig_number);
-  return lengths;
+	return this.arrayFn(m,s,"length");
 }
 
 /* Collatz.prototype.stoppingTimes */ 
 Collatz.prototype.stoppingTimes  = function(m,s){
-  if (typeof m === "undefined") { 
-	throw new Error("offset is needed")
-  }
-  if (!/^\+?(0|[1-9]\d*)$/.test(m)) { 
-	throw new Error(m+"as offset is not a positive number")
-  }
+	return this.arrayFn(m,s,"stoppingTime");
+}
+
+
+/* Collatz.prototype.arraFn */ 
+Collatz.prototype.arrayFn = function(m,s,parameter){
+  if (typeof m === "undefined") throw new Error("offset is needed");
+  if (!(/^\+?(0|[1-9]\d*)$/.test(m) && /^\+?(0|[1-9]\d*)$/.test(s))) throw new Error(m + " or " + s + " are not a positive numbers");
+  if (!(parameter =="length" || parameter =="stoppingTime")) throw new Error(parameter + "is a wrong parameter");
   var offset = bigInt(m);
-  var times=[];
+  var array=[];
   var orig_number=this._number.toString();
   var max_number=this._number.add(offset);
   var iter = bigInt(this._number);
   while (iter.lt(max_number)){
     iter=iter.add(s);
     this.number(iter);
-    times.push(this.stoppingTime());
+	if (parameter=="length"){		
+		array.push(this.length());
+	}
+	else{
+	    array.push(this.stoppingTime());
+	}
   } 
   this.number(orig_number);
-  return times;
+  return array;
 }
   
 /*******************************************************************************************************/
