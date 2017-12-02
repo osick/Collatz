@@ -10,18 +10,17 @@ Table of Contents
   * [Quickstart](#Quick-start)
   * [Mathematical Background](#Mathematical-Background)
   * [Usage](#Usage)
-        * [init](#init)
-        * [numbern](#numbern)
-        * [toString](#toString)
-        * [length](#length)
-        * [stoppingTime](#stoppingTime)
-        * [sequence](#sequence)
-        * [lengts](#lengthsms)
-        * [stoppingTimes](#stoppingTimesms)
+      * [init](#init)
+      * [numbern](#numbern)
+      * [toString](#toString)
+      * [length](#length)
+      * [stoppingTime](#stoppingTime)
+      * [sequence](#sequence)
+      * [lengts](#lengthsms)
+      * [stoppingTimes](#stoppingTimesms)
   * [Dependencies](#Dependencies)
   * [License](#license)
   
-
 ## Quick start
 ### Installation
 
