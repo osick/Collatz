@@ -33,11 +33,9 @@ Collatz sequences n<sub>k</sub> are defined for k>=0 as follows:
   * else n<sub>k+1</sub>=3*n<sub>k</sub>+1
 
 For example choose 
-n<sub>0</sub> = 7 then  
+n<sub>0</sub> = 7  
 n<sub>1</sub>  = 22  
 n<sub>2</sub>  = 11  
-n<sub>3</sub>  = 34  
-n<sub>4</sub>  = 17  
 ...  
 n<sub>14</sub> =  8  
 n<sub>15</sub> =  4  
@@ -53,7 +51,6 @@ This conjecture is still open for more than 60 years. For more information see t
 
 ## Usage
 
-### Initialization
 #### `init()`
 
 ```javascript
@@ -73,7 +70,7 @@ collatz_3.init();
 ```
 
 
-#### `number()`
+#### `number(n)`
 Set the initial number
 ```javascript
 var collatz = new Collatz("17");
@@ -85,7 +82,7 @@ collatz.number("12");
 Returns the initial number
 ```javascript
 var collatz = new Collatz("17");
-collatz.toString();
+console.log(collatz.toString());
 // Output string "17"
 ```
 
@@ -93,7 +90,7 @@ collatz.toString();
 Return the length of the Collatz sequence until reaching 1
 ```javascript
 collatz.number("17");
-collatz.length();
+console.log(collatz.length());
 //Output 12
 ```
 
@@ -101,7 +98,7 @@ collatz.length();
 Return the stopping time
 ```javascript
 collatz.number("17");
-collatz.stoppingTime(); 
+console.log(collatz.stoppingTime()); 
 //Output 3
 ```
 
@@ -109,15 +106,16 @@ collatz.stoppingTime();
 Return the Collatz sequence starting from the initial value
 ```javascript
 collatz.number("17");
-collatz.sequence();
-//computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
+var seq=collatz.sequence();
+console.log(seq.toString());
+//returns [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
 #### Method `lengths(m,s)`
 Return an array of lengths m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
-collatz.lengths(20,1).toString();
+console.log(collatz.lengths(20,1).toString());
 //Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
 ```
 
@@ -125,7 +123,7 @@ collatz.lengths(20,1).toString();
 Return an array of stopping times m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
-collatz.stoppingTimes(30,2).toString(); 
+console.log(collatz.stoppingTimes(30,2).toString()); 
 //Output string "6,3,8,3,96,3,91,3,6,3,13,3,8,3,88"
 ```
 
