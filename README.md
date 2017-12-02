@@ -20,7 +20,8 @@ npm install
 cd examples
 nodejs example.js
 ```
-___
+
+---
 
 ## Mathematical Background
 
@@ -48,10 +49,12 @@ and so on
 The Collatz Conjecture now is that for any initial number n<sub>0</sub> there is a k>0 s.t. n<sub>k</sub> = 1.
 This conjecture is still open for more than 60 years. For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
 
-***
+---
 
 ## Usage
-### `init()`
+
+### Initialization
+#### `init()`
 
 ```javascript
 var Collatz = require('collatz.js').Collatz;  
@@ -67,57 +70,68 @@ collatz_3.init();
 ```
 
 
-#### `number()` : Set the initial number
+#### `number()`
+Set the initial number
 ```javascript
 var collatz = new Collatz("17");
 collatz.number("12");
 // Now 12 is the initial number "17"
 ```
 
-#### `toString()` : Returns the initial number
+#### `toString()`
+Returns the initial number
 ```javascript
 var collatz = new Collatz("17");
 collatz.toString();
 // Output string "17"
 ```
 
-####  `length()` : Return the length of the Collatz sequence until reaching 1
+####  `length()`
+Return the length of the Collatz sequence until reaching 1
 ```javascript
 collatz.number("17");
 collatz.length();
 //Output 12
 ```
 
-####  `stoppingTime()` : Return the stopping time
+####  `stoppingTime()`
+Return the stopping time
 ```javascript
 collatz.number("17");
 collatz.stoppingTime(); 
 //Output 3
 ```
 
-####  `sequence()` : Return the Collatz sequence starting from the initial value
+####  `sequence()`
+Return the Collatz sequence starting from the initial value
 ```javascript
 collatz.number("17");
 collatz.sequence();
 //computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
-#### Method `lengths(m,s)` : Return an array of lengths m starting from the initial and with stepsize s
+#### Method `lengths(m,s)`
+Return an array of lengths m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
 collatz.lengths(20,1).toString();
 //Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
 ```
 
-#### Method `stoppingTimes(m,s)` : Return an array of stopping times m starting from the initial and with stepsize s
+#### Method `stoppingTimes(m,s)`
+Return an array of stopping times m starting from the initial and with stepsize s
 ```javascript
 collatz.number("17");
 collatz.stoppingTimes(30,2).toString(); 
 //Output string "6,3,8,3,96,3,91,3,6,3,13,3,8,3,88"
 ```
 
+---
+
 ## Dependencies
 - [big-integer](https://www.npmjs.com/package/big-integer)  NodeJS module
+
+---
 
 ## License
 - [MIT](https://github.com/electron/electron/blob/master/LICENSE)
