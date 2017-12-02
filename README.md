@@ -58,12 +58,15 @@ This conjecture is still open for more than 60 years. For more information see t
 
 ```javascript
 var Collatz = require('collatz.js').Collatz;  
+
 // integer input is supported
 var collatz = new Collatz(17);
 collatz.init();
+
 // big-integer is supported
 var collatz_2 = new Collatz(bigInt(2).pow(5000).add(1));
 collatz_2.init();
+
 // strings of digits are supported, e.g.
 var collatz_3 = new Collatz("612736124162374123874373678123461782346187293461782347823645");
 collatz_3.init();
