@@ -153,6 +153,7 @@ console.log(collatz.iterNumber().toString());
 
 ####  `isOne()`
 Checks if the current value is "1"
+```javascript
 collatz.number("17");
 while(!collatz.isOne()){
 	console.log(collatz.iterNumber().toString()+", ");
