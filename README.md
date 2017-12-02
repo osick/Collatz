@@ -19,6 +19,8 @@ Table of Contents
       * [sequence()](#sequence)
       * [lengths(m,s)](#lengthsms)
       * [stoppingTimes(m,s)](#stoppingTimesms)
+	  * [iterNumber()](#iterNumber)
+	  * [isOne()](#isOne)
   * [Dependencies](#Dependencies)
   * [License](#license)
   
@@ -139,6 +141,23 @@ collatz.number("17");
 var seq=collatz.sequence();
 console.log(seq.toString());
 //returns [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
+```
+
+####  `iterNumber()`
+Iterator to set the class to the next Collatz number in the sequence
+```javascript
+collatz.number("17");
+console.log(collatz.iterNumber().toString());
+//prints "52"
+```
+
+####  `isOne()`
+Checks if the current value is "1"
+collatz.number("17");
+while(!collatz.isOne()){
+	console.log(collatz.iterNumber().toString()+", ");
+} 
+//prints out "52, 26, 13, ...., 1"
 ```
 
 #### `lengths(m,s)`
