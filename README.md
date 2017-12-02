@@ -27,73 +27,67 @@ n<sub>18</sub> =  4
 and so on  
 
 The Collatz Conjecture now is that for any initial number n<sub>0</sub> there is a k>0 s.t. n<sub>k</sub> = 1.
-This conjecture is still open for more than 60 years.  
-For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
+This conjecture is still open for more than 60 years. For more information see the [Wikipedia on Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) .
 
-##Basis syntax
+## Basis syntax
 
-####Init
+#### Init
 
 ```javascript
-	var Collatz = require('./collatz/collatz.js').Collatz;  
-    collatz.number("17"); 
-	//also collatz.number(17) is possible
-    collatz.init();
+var Collatz = require('./collatz/collatz.js').Collatz;  
+collatz.number("17"); 
+//also collatz.number(17) is possible
+collatz.init();
 ```
 
 also big-integer are supported 
 
 ```javascript	
-	//1000 digit number
-    var Collatz = require('./collatz/collatz.js').Collatz;  
-	var bigInt = require("big-integer");
-    collatz.number(bigInt(10).pow(1000).add(5));
-    collatz.init();
+//1000 digit number
+var Collatz = require('./collatz/collatz.js').Collatz;  
+var bigInt = require("big-integer");
+collatz.number(bigInt(10).pow(1000).add(5));
+collatz.init();
 ```
 
-####Get number: 
+#### Get number: 
 
 ```javascript
-    
-	collatz.toString() 
-    // Output string "17"
+collatz.toString() 
+// Output string "17"
 ```
 
-####Get length: 
+#### Get length: 
 
 ```javascript
-	
-	collatz.number("17");
-	collatz.length() 
-	//Output 12
+collatz.number("17");
+collatz.length() 
+//Output 12
 ```
 
-####Get stopping time:
+#### Get stopping time:
 
 ```javascript
-    
-	collatz.number("17");
-    collatz.stoppingTime() 
-    //Output 3
+collatz.number("17");
+collatz.stoppingTime() 
+//Output 3
 ```
 
-####Get sequence:
+#### Get sequence:
 ```javascript
-    
-	collatz.number("17");
-    collatz.sequence()
-	//computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
+collatz.number("17");
+collatz.sequence()
+//computes the sequence [52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1,52,26,13,40,20,10,5,16,8,4,2,1]
 ```
 
-####Get array of lengths (20 steps, width 1):
+#### Get array of lengths (20 steps, width 1):
 ```javascript
-    
-	collatz.number("17")
-    collatz.lengths(20,1).toString() 
-	//Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
+collatz.number("17")
+collatz.lengths(20,1).toString() 
+//Output string "0,20,7,7,15,15,10,23,10,111,18,18,18,106,5,26,13,13,21,21"
 ```
 
-####Get array of stopping Times (30 step, width 2):
+#### Get array of stopping Times (30 step, width 2):
 ```javascript
 collatz.number("17");
 collatz.stoppingTimes(30,2).toString() 
